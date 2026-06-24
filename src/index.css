@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap");
+@import "tailwindcss";
+
+/* ==========================================================================
+   Design tokens — Clinical Trust palette
+   Deep teal reads as medical/calm rather than generic startup blue.
+   Green is reserved for health/in-stock signals so it stays meaningful.
+   ========================================================================== */
+:root {
+  /* Brand */
+  --color-primary: #0f5c5c;       /* deep clinical teal — primary actions, headers */
+  --color-primary-dark: #0b4747;
+  --color-primary-light: #e3f2f1; /* tint for badges, hover states, soft surfaces */
+
+  --color-secondary: #1b3a5c;     /* slate navy — secondary actions, nav, footer */
+
+  /* Status (use sparingly, only for real states) */
+  --color-success: #2e8b57;       /* in stock, order confirmed */
+  --color-warning: #b8722e;       /* low stock, expiry notice */
+  --color-danger: #b3403a;        /* out of stock, errors */
+
+  /* Neutrals */
+  --color-bg: #f6f9f9;
+  --color-surface: #ffffff;
+  --color-border: #e2e8e8;
+  --color-text-primary: #14222b;
+  --color-text-secondary: #5b6b72;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+body {
+  font-family: "Manrope", sans-serif;
+  background: linear-gradient(180deg, var(--color-bg), #eef5f5);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Tight tracking belongs on display type, not body copy — keeps prescription
+   details, dosages, and prices legible. */
+h1, h2, h3, h4,
+.display {
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+/* Smooth scrolling, but respect users who've asked for less motion */
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Selection color */
+::selection {
+  background: var(--color-primary);
+  color: white;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-dark);
+}
+
+/* Visible focus ring — important for a pharmacy app where forms
+   (prescriptions, refills, addresses) need to be easy to navigate by keyboard */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
